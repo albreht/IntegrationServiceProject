@@ -11,17 +11,17 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{DC1B599F-7CEE-445D-A27E-43FFB871F2AF}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{E446001E-9D12-4060-B3B8-A3BD2EE3DA0F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[ETL1]"
+      DTS:refId="Package.ConnectionManagers[ETL]"
       DTS:CreationName="OLEDB"
       DTS:DelayValidation="True"
       DTS:DTSID="{14E62AB2-3893-4A1A-9CEA-9D5022954EF7}"
-      DTS:ObjectName="ETL1">
+      DTS:ObjectName="ETL">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
@@ -174,8 +174,8 @@
                   <connections>
                     <connection
                       refId="Package\For Loop Container\CopyData 1\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[ETL1]"
-                      connectionManagerRefId="Package.ConnectionManagers[ETL1]"
+                      connectionManagerID="Package.ConnectionManagers[ETL]"
+                      connectionManagerRefId="Package.ConnectionManagers[ETL]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>

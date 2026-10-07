@@ -78,6 +78,8 @@ internal sealed class DtsxLoggingInjector
 
         var sourceRoot = sourceDoc.Root ?? throw new InvalidOperationException("Pakiet źródłowy nie posiada elementu głównego.");
         var targetRoot = targetDoc.Root ?? throw new InvalidOperationException("Pakiet docelowy nie posiada elementu głównego.");
+        var targetConnectionManagerCount = targetRoot.Element(dtsNs + "ConnectionManagers")?
+            .Elements(dtsNs + "ConnectionManager").Count() ?? 0;
 
         var sourceVariables = sourceRoot.Element(dtsNs + "Variables")?.Elements(dtsNs + "Variable")
             .Where(variable => ((string?)variable.Attribute(dtsNs + "ObjectName"))?.StartsWith("vLog", StringComparison.OrdinalIgnoreCase) == true)
@@ -178,6 +180,10 @@ internal sealed class DtsxLoggingInjector
             }
         }
 
+        var finalConnectionManagerCount = targetRoot.Element(dtsNs + "ConnectionManagers")?
+            .Elements(dtsNs + "ConnectionManager").Count() ?? 0;
+        injectedCount += finalConnectionManagerCount - targetConnectionManagerCount;
+
         return injectedCount;
     }
 
@@ -239,14 +245,54 @@ internal sealed class DtsxLoggingInjector
         var matchingTargetManagers = targetManagers.Where(manager =>
             string.Equals((string?)manager.Attribute(dtsNs + "ObjectName"), sourceName, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        if (matchingTargetManagers.Count != 1)
+        if (matchingTargetManagers.Count > 1)
         {
-            throw new InvalidOperationException(matchingTargetManagers.Count == 0
-                ? $"Pakiet docelowy nie zawiera connection managera '{sourceName}' wymaganego przez event handler."
-                : $"Pakiet docelowy zawiera więcej niż jeden connection manager o nazwie '{sourceName}'.");
+            throw new InvalidOperationException($"Pakiet docelowy zawiera więcej niż jeden connection manager o nazwie '{sourceName}'.");
         }
 
-        return (sourceManager, matchingTargetManagers[0]);
+        if (matchingTargetManagers.Count == 1)
+        {
+            return (sourceManager, matchingTargetManagers[0]);
+        }
+
+        if (string.IsNullOrWhiteSpace(sourceName))
+        {
+            throw new InvalidOperationException($"Connection manager dla referencji '{reference}' nie ma nazwy.");
+        }
+
+        var targetManagersRoot = targetRoot.Element(dtsNs + "ConnectionManagers");
+        if (targetManagersRoot is null)
+        {
+            targetManagersRoot = new XElement(dtsNs + "ConnectionManagers");
+            var targetVariables = targetRoot.Element(dtsNs + "Variables");
+            if (targetVariables is null)
+            {
+                targetRoot.AddFirst(targetManagersRoot);
+            }
+            else
+            {
+                targetVariables.AddBeforeSelf(targetManagersRoot);
+            }
+        }
+
+        var copiedManager = new XElement(sourceManager);
+        var sourceRefId = (string?)copiedManager.Attribute(dtsNs + "refId");
+        if (sourceRefId is not null && targetManagersRoot.Elements(dtsNs + "ConnectionManager")
+                .Any(manager => string.Equals((string?)manager.Attribute(dtsNs + "refId"), sourceRefId, StringComparison.OrdinalIgnoreCase)))
+        {
+            var targetRefId = (string?)targetRoot.Attribute(dtsNs + "refId") ?? "Package";
+            var copiedRefId = $"{targetRefId}.ConnectionManagers[{sourceName}]";
+            if (targetManagersRoot.Elements(dtsNs + "ConnectionManager")
+                    .Any(manager => string.Equals((string?)manager.Attribute(dtsNs + "refId"), copiedRefId, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new InvalidOperationException($"Nie można dodać connection managera '{sourceName}', ponieważ referencja '{copiedRefId}' jest już używana.");
+            }
+
+            copiedManager.SetAttributeValue(dtsNs + "refId", copiedRefId);
+        }
+
+        targetManagersRoot.Add(copiedManager);
+        return (sourceManager, copiedManager);
     }
 
     private static bool IsConnectionManagerReference(XAttribute attribute)

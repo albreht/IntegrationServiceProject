@@ -1,264 +1,82 @@
-<?xml version="1.0"?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:refId="Package"
-  DTS:CreationDate="10/6/2026 2:40:50 PM"
-  DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="LAPTOP-92G87K1"
-  DTS:CreatorName="LAPTOP-92G87K1\test"
-  DTS:DTSID="{3D5A682E-85D6-44F1-8958-1495B21AD7F5}"
-  DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="17.0.1016.0"
-  DTS:LocaleID="1045"
-  DTS:ObjectName="Package1"
-  DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{88E790BF-6414-4FB8-8B09-D006E9AD51F2}">
-  <DTS:Property
-    DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[ETL]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{1B1BCB78-609C-4E62-8289-0C42F50FB106}"
-      DTS:ObjectName="ETL">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts" DTS:refId="Package" DTS:CreationDate="10/7/2026 10:51:05 AM" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="LAPTOP-92G87K1" DTS:CreatorName="LAPTOP-92G87K1\test" DTS:DTSID="{B9BC39E1-47C6-4FBB-A46D-EAB37888341B}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="17.0.1016.0" DTS:LocaleID="1045" DTS:ObjectName="Package1" DTS:PackageType="5" DTS:VersionGUID="{EE065B64-6AEF-4E8D-BA30-BB6343032E5C}">
+  <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers><DTS:ConnectionManager DTS:refId="Package.ConnectionManagers[ETL]" DTS:CreationName="OLEDB" DTS:DelayValidation="True" DTS:DTSID="{14E62AB2-3893-4A1A-9CEA-9D5022954EF7}" DTS:ObjectName="ETL">
       <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=test;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{1B1BCB78-609C-4E62-8289-0C42F50FB106}localhost.test;Auto Translate=False;" />
+        <DTS:ConnectionManager DTS:ConnectRetryCount="1" DTS:ConnectRetryInterval="5" DTS:ConnectionString="Data Source=LAPTOP-92G87K1;Initial Catalog=SSIS_LOG;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Trust Server Certificate=True;Application Name=SSIS-Package-{14E62AB2-3893-4A1A-9CEA-9D5022954EF7}localhost.test;" />
       </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
-  <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{53696c94-4915-4cc4-b192-a2be201a12d8}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="vLogTotalRecordCount">
-      <DTS:VariableValue
-        DTS:DataType="20">0</DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+    </DTS:ConnectionManager></DTS:ConnectionManagers><DTS:Variables><DTS:Variable DTS:CreationName="" DTS:DTSID="{d201cb1e-cb1d-42eb-a164-549a3e6aaebe}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="vLogTotalRecordCount">
+      <DTS:VariableValue DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable></DTS:Variables>
   <DTS:Executables />
-  <DTS:EventHandlers>
-    <DTS:EventHandler
-      DTS:refId="Package.EventHandlers[OnError]"
-      DTS:CreationName="OnError"
-      DTS:DTSID="{0f798089-955d-40f7-8d58-c5666c092b09}"
-      DTS:EventID="-40850416"
-      DTS:EventName="OnError"
-      DTS:LocaleID="-1">
+<DTS:EventHandlers><DTS:EventHandler DTS:refId="Package.EventHandlers[OnError]" DTS:CreationName="OnError" DTS:DTSID="{405b2108-2b1b-498f-91a1-4f476f685da9}" DTS:EventID="-40850416" DTS:EventName="OnError" DTS:LocaleID="-1">
       <DTS:Variables>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:Description="The propagate property of the event"
-          DTS:DTSID="{b0762d8c-6145-4a78-b1a6-c47ba8d94a94}"
-          DTS:IncludeInDebugDump="6789"
-          DTS:Namespace="System"
-          DTS:ObjectName="Propagate">
-          <DTS:VariableValue
-            DTS:DataType="11">-1</DTS:VariableValue>
-        </DTS:Variable>
-      </DTS:Variables>
-      <DTS:Executables />
-    </DTS:EventHandler>
-    <DTS:EventHandler
-      DTS:refId="Package.EventHandlers[OnPostExecute]"
-      DTS:CreationName="OnPostExecute"
-      DTS:DTSID="{ec1697d1-e151-42df-a026-005c9a01c2f4}"
-      DTS:EventID="0"
-      DTS:EventName="OnPostExecute"
-      DTS:LocaleID="-1">
-      <DTS:Variables>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:Description="The propagate property of the event"
-          DTS:DTSID="{c2fabb3b-0499-47cd-957d-199c646b9bab}"
-          DTS:IncludeInDebugDump="6789"
-          DTS:Namespace="System"
-          DTS:ObjectName="Propagate">
-          <DTS:VariableValue
-            DTS:DataType="11">-1</DTS:VariableValue>
+        <DTS:Variable DTS:CreationName="" DTS:Description="The propagate property of the event" DTS:DTSID="{c0dfd9d9-6c69-478b-bca6-e75ddcc6ba6b}" DTS:IncludeInDebugDump="6789" DTS:Namespace="System" DTS:ObjectName="Propagate">
+          <DTS:VariableValue DTS:DataType="11">-1</DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnPostExecute]\Expression Task"
-          DTS:CreationName="Microsoft.ExpressionTask"
-          DTS:Description="Expression Task"
-          DTS:DTSID="{f14bf364-44df-4309-a19b-49d5f50d2752}"
-          DTS:ExecutableType="Microsoft.ExpressionTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Expression Task"
-          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2025; ? 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+        <DTS:Executable DTS:refId="Package.EventHandlers[OnError]\Expression Task" DTS:CreationName="Microsoft.ExpressionTask" DTS:Description="Expression Task" DTS:DTSID="{cafa895b-3277-48f8-aea5-73fc42f04844}" DTS:ExecutableType="Microsoft.ExpressionTask" DTS:LocaleID="-1" DTS:ObjectName="Expression Task">
           <DTS:Variables />
           <DTS:ObjectData>
-            <ExpressionTask
-              Expression="1==1" />
+            <ExpressionTask Expression="@[User::Variable]=1" />
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnPostExecute]\LogPostExecute"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{1e2a9473-e5eb-4b33-9928-3d1eb8a104a4}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="LogPostExecute"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; ? 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+        <DTS:Executable DTS:refId="Package.EventHandlers[OnError]\LogOnError" DTS:CreationName="Microsoft.ExecuteSQLTask" DTS:Description="LogPackageStart" DTS:DTSID="{cb4f0a3e-c30c-4b67-9a93-c82c22f2ab62}" DTS:ExecutableType="Microsoft.ExecuteSQLTask" DTS:LocaleID="-1" DTS:ObjectName="LogOnError" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; � 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{1B1BCB78-609C-4E62-8289-0C42F50FB106}"
-              SQLTask:SqlStatementSource="exec dbo.AddLog ?,?,?,'OnPostExecute'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="0"
-                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="72"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="1"
-                SQLTask:DtsVariableName="System::PackageName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="2"
-                SQLTask:DtsVariableName="System::SourceName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="-1" />
+            <SQLTask:SqlTaskData SQLTask:Connection="{14E62AB2-3893-4A1A-9CEA-9D5022954EF7}" SQLTask:SqlStatementSource="exec dbo.AddLog ?,?,?,'OnError',?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding SQLTask:ParameterName="0" SQLTask:DtsVariableName="System::ExecutionInstanceGUID" SQLTask:ParameterDirection="Input" SQLTask:DataType="72" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="1" SQLTask:DtsVariableName="System::PackageName" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="2" SQLTask:DtsVariableName="System::SourceName" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="3" SQLTask:DtsVariableName="System::ErrorDescription" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler><DTS:EventHandler DTS:refId="Package.EventHandlers[OnPostExecute]" DTS:CreationName="OnPostExecute" DTS:DTSID="{1fd3d0f2-cfaa-4865-82d4-8d4bab2bc540}" DTS:EventID="0" DTS:EventName="OnPostExecute" DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable DTS:CreationName="" DTS:Description="The propagate property of the event" DTS:DTSID="{e3ea984d-b788-43f0-8956-449dc93921ff}" DTS:IncludeInDebugDump="6789" DTS:Namespace="System" DTS:ObjectName="Propagate">
+          <DTS:VariableValue DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable DTS:refId="Package.EventHandlers[OnPostExecute]\Expression Task" DTS:CreationName="Microsoft.ExpressionTask" DTS:Description="Expression Task" DTS:DTSID="{bc24a4a9-68a9-4d3b-bb90-4e8a337964c7}" DTS:ExecutableType="Microsoft.ExpressionTask" DTS:LocaleID="-1" DTS:ObjectName="Expression Task" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2025; � 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask Expression="1==1" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:refId="Package.EventHandlers[OnPostExecute]\LogPostExecute" DTS:CreationName="Microsoft.ExecuteSQLTask" DTS:Description="Execute SQL Task" DTS:DTSID="{bfa9c64e-679f-4913-9f0e-1ad3e4709f26}" DTS:ExecutableType="Microsoft.ExecuteSQLTask" DTS:LocaleID="-1" DTS:ObjectName="LogPostExecute" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; � 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="{14E62AB2-3893-4A1A-9CEA-9D5022954EF7}" SQLTask:SqlStatementSource="exec dbo.AddLog ?,?,?,'OnPostExecute'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding SQLTask:ParameterName="0" SQLTask:DtsVariableName="System::ExecutionInstanceGUID" SQLTask:ParameterDirection="Input" SQLTask:DataType="72" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="1" SQLTask:DtsVariableName="System::PackageName" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="2" SQLTask:DtsVariableName="System::SourceName" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{60231482-d269-4995-9a04-88e67e4769c5}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[System::PackageName]==@[System::SourceName]"
-          DTS:From="Package.EventHandlers[OnPostExecute]\Expression Task"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package.EventHandlers[OnPostExecute]\LogPostExecute" />
+        <DTS:PrecedenceConstraint DTS:refId="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]" DTS:CreationName="" DTS:DTSID="{a5f740bd-0e3d-4191-9862-99c6a2b17916}" DTS:EvalOp="1" DTS:Expression="@[System::PackageName]==@[System::SourceName]" DTS:From="Package.EventHandlers[OnPostExecute]\Expression Task" DTS:LogicalAnd="True" DTS:ObjectName="Constraint" DTS:To="Package.EventHandlers[OnPostExecute]\LogPostExecute" />
       </DTS:PrecedenceConstraints>
-    </DTS:EventHandler>
-    <DTS:EventHandler
-      DTS:refId="Package.EventHandlers[OnPreExecute]"
-      DTS:CreationName="OnPreExecute"
-      DTS:DTSID="{1d80310f-94f5-4c9d-86bc-3e99593eface}"
-      DTS:EventID="1272377376"
-      DTS:EventName="OnPreExecute"
-      DTS:LocaleID="-1">
+    </DTS:EventHandler><DTS:EventHandler DTS:refId="Package.EventHandlers[OnPreExecute]" DTS:CreationName="OnPreExecute" DTS:DTSID="{e2b74f02-eeec-4cd0-bf91-a1187162bf39}" DTS:EventID="1272377376" DTS:EventName="OnPreExecute" DTS:LocaleID="-1">
       <DTS:Variables>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:Description="The propagate property of the event"
-          DTS:DTSID="{ef75797b-bbd8-48e4-b6f1-bcaf9392a96d}"
-          DTS:IncludeInDebugDump="6789"
-          DTS:Namespace="System"
-          DTS:ObjectName="Propagate">
-          <DTS:VariableValue
-            DTS:DataType="11">-1</DTS:VariableValue>
+        <DTS:Variable DTS:CreationName="" DTS:Description="The propagate property of the event" DTS:DTSID="{fdc11a83-8100-4665-9e13-2f324a407bb0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="System" DTS:ObjectName="Propagate">
+          <DTS:VariableValue DTS:DataType="11">-1</DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnPreExecute]\LogPreExecute2"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="LogPackageStart"
-          DTS:DTSID="{9bc72167-0471-458b-9852-278d7a3e09b4}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="LogPreExecute2"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; ? 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+        <DTS:Executable DTS:refId="Package.EventHandlers[OnPreExecute]\LogPreExecute2" DTS:CreationName="Microsoft.ExecuteSQLTask" DTS:Description="LogPackageStart" DTS:DTSID="{1e98da55-a5cc-4677-8e1d-51f0af10f536}" DTS:ExecutableType="Microsoft.ExecuteSQLTask" DTS:LocaleID="-1" DTS:ObjectName="LogPreExecute2" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; � 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{1B1BCB78-609C-4E62-8289-0C42F50FB106}"
-              SQLTask:SqlStatementSource="exec dbo.AddLog ?,?,?,'OnPreExecute'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="0"
-                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="72"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="1"
-                SQLTask:DtsVariableName="System::PackageName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="2"
-                SQLTask:DtsVariableName="System::SourceName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="-1" />
+            <SQLTask:SqlTaskData SQLTask:Connection="{14E62AB2-3893-4A1A-9CEA-9D5022954EF7}" SQLTask:SqlStatementSource="exec dbo.AddLog ?,?,?,'OnPreExecute'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding SQLTask:ParameterName="0" SQLTask:DtsVariableName="System::ExecutionInstanceGUID" SQLTask:ParameterDirection="Input" SQLTask:DataType="72" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="1" SQLTask:DtsVariableName="System::PackageName" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding SQLTask:ParameterName="2" SQLTask:DtsVariableName="System::SourceName" SQLTask:ParameterDirection="Input" SQLTask:DataType="129" SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
-    </DTS:EventHandler>
-  </DTS:EventHandlers>
-  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
-<Objects
-  Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
-  <DtsEventHandler
-    design-time-name="Package.EventHandlers[OnPostExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="NaN,NaN"
-          Id="Package.EventHandlers[OnPostExecute]\Expression Task"
-          TopLeft="NaN,NaN" />
-        <NodeLayout
-          Size="NaN,NaN"
-          Id="Package.EventHandlers[OnPostExecute]\LogPostExecute"
-          TopLeft="NaN,NaN" />
-        <EdgeLayout
-          Id="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]"
-          TopLeft="NaN,NaN">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
-              Start="0,0"
-              End="0,0">
-              <mssgle:Curve.Segments>
-                <assembly:Null />
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <DtsEventHandler
-    design-time-name="Package.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="NaN,NaN"
-          Id="Package.EventHandlers[OnPreExecute]\LogPreExecute2"
-          TopLeft="NaN,NaN" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-</Objects>]]></DTS:DesignTimeProperties>
-</DTS:Executable>
+    </DTS:EventHandler></DTS:EventHandlers></DTS:Executable>
