@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Development" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="DtsxLoggingInjector/DtsxLoggingInjector.csproj">
+    <BuildType Solution="Development|*" Project="Release" />
+  </Project>
+  <Project Path="Integration Services Project/Integration Services Project1.dtproj" Type="c9674dcb-5085-4a16-b785-4c70dd1589bd">
+    <BuildType Project="Development" />
+    <Platform Project="?" />
+  </Project>
+</Solution>
